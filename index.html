@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter-Strike 1.6 — Web Edition (HD)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- ================= HUD ================= -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-block"><span class="label">ВОЛНА</span><span id="hud-wave">1</span></div>
+      <div class="hud-block"><span class="label">ВРАГИ</span><span id="hud-enemies">0</span></div>
+      <div class="hud-block"><span class="label">ОЧКИ</span><span id="hud-score">0</span></div>
+      <div class="hud-block"><span class="label">ВРЕМЯ</span><span id="hud-time">0:00</span></div>
+    </div>
+
+    <div class="hud-bottom">
+      <div class="hud-left">
+        <div class="stat"><span class="ico">&#10084;</span><span id="hud-health">100</span></div>
+        <div class="stat armor"><span class="ico">&#128737;</span><span id="hud-armor">0</span></div>
+      </div>
+      <div class="hud-right">
+        <div class="weapon-name" id="hud-weapon">USP</div>
+        <div class="ammo">
+          <span id="hud-ammo">12</span><span class="sep">/</span><span id="hud-reserve">60</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="wave-banner" class="hidden"></div>
+  </div>
+
+  <!-- ================= Прицел ================= -->
+  <div id="crosshair" class="hidden">
+    <span class="ch ch-t"></span>
+    <span class="ch ch-b"></span>
+    <span class="ch ch-l"></span>
+    <span class="ch ch-r"></span>
+    <span class="ch ch-dot"></span>
+  </div>
+  <div id="hitmarker" class="hidden"></div>
+  <div id="damage-flash"></div>
+  <div id="vignette"></div>
+  <div id="killfeed"></div>
+
+  <!-- ================= Главное меню ================= -->
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <h1>COUNTER<span>-</span>STRIKE</h1>
+      <p class="sub">WEB EDITION &middot; 1.6 &middot; HD</p>
+      <button id="btn-start" class="btn">НАЧАТЬ ИГРУ</button>
+      <button id="btn-records" class="btn ghost">РЕКОРДЫ</button>
+      <div class="controls">
+        <div><b>WASD</b> — движение</div>
+        <div><b>Мышь</b> — обзор</div>
+        <div><b>ЛКМ</b> — огонь</div>
+        <div><b>R</b> — перезарядка</div>
+        <div><b>1 / 2</b> — оружие</div>
+        <div><b>Shift</b> — бег</div>
+        <div><b>Esc</b> — пауза</div>
+        <div><b>ЛКМ</b> по экрану — захват мыши</div>
+      </div>
+      <div id="best-line" class="best-line"></div>
+    </div>
+  </div>
+
+  <!-- ================= Рекорды ================= -->
+  <div id="records" class="overlay hidden">
+    <div class="panel">
+      <h2>ТАБЛИЦА РЕКОРДОВ</h2>
+      <ol id="records-list"></ol>
+      <div class="row">
+        <button id="btn-records-back" class="btn ghost">НАЗАД</button>
+        <button id="btn-records-clear" class="btn danger">ОЧИСТИТЬ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Пауза ================= -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <h2>ПАУЗА</h2>
+      <button id="btn-resume" class="btn">ПРОДОЛЖИТЬ</button>
+      <button id="btn-restart" class="btn ghost">ЗАНОВО</button>
+      <button id="btn-menu" class="btn ghost">В МЕНЮ</button>
+    </div>
+  </div>
+
+  <!-- ================= Смерть ================= -->
+  <div id="gameover" class="overlay hidden">
+    <div class="panel">
+      <h2 class="dead">ВЫ ПОГИБЛИ</h2>
+      <div class="result">
+        <div><span>Очки</span><b id="res-score">0</b></div>
+        <div><span>Убийства</span><b id="res-kills">0</b></div>
+        <div><span>Волна</span><b id="res-wave">0</b></div>
+        <div><span>Время</span><b id="res-time">0:00</b></div>
+      </div>
+      <div id="res-best" class="best"></div>
+      <button id="btn-again" class="btn">ИГРАТЬ СНОВА</button>
+      <button id="btn-go-menu" class="btn ghost">В МЕНЮ</button>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
